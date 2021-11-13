@@ -18,9 +18,9 @@ const Config = require('../config');
 const Language = require('../language');
 const YTV_DESC = "Youtube Video ."
 const YT_NEED = "Necesito que ingreses algún enlace de mediafire para descargar."
-const DWLOAD_VID = "*Descargando... 😜*"
-const YTV_UP = "*Subiendo... 😜*"
-const NO_RESULT = "*no puedo encontrar nada :(...*"
+const DWLOAD_VID = "*ʏᴏᴜʀ ꜰɪʟᴇ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ*"
+const YTV_UP = "*ᴜᴘʟᴏʀᴅɪɴɢ*"
+const NO_RESULT = "*ᴄᴏɴᴛ ꜰɪɴᴅ :(...*"
 
 
 if (Config.WORKTYPE == 'private') {
