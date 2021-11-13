@@ -268,13 +268,13 @@ else if (config.WORKTYPE == 'public') {
 	try {
 		const response = await got(url);
 		const json = JSON.parse(response.body);
-	  if (response.statusCode === 200) return await message.client.sendMessage(message.jid, 'BABY💘' + Lang.BOT +' ```' + json.messages[0].response + '```\n\n' , MessageType.text,{quoted: message.data});
+	  if (response.statusCode === 200) return await message.client.sendMessage(message.jid, 'ᴘᴀɴᴅᴀ🐼' + Lang.BOT +' ```' + json.messages[0].response + '```\n\n' , MessageType.text,{quoted: message.data});
 	} catch {
 		return await message.client.sendMessage(message.jid, Lang.NOT_FOUNDAC, MessageType.text);
 	}
     });
 
-    Asena.addCommand({pattern: 'zowner', fromMe: false, desc: 'shows the detail of bot owner'}, (async (message, match) => {
+    Asena.addCommand({pattern: 'jidk', fromMe: false, desc: 'shows the detail of bot owner'}, (async (message, match) => {
 
         if (message.jid === '15369524516-1612300121@g.us') {
 
