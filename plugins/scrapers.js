@@ -973,7 +973,7 @@ else if (config.WORKTYPE == 'public') {
         });
     }));
     
-     Asena.addCommand({ pattern: "video ?(.*)", fromMe: fm, desc: Lang.VIDEO_DESC }, (async (message, match) => {
+     Asena.addCommand({ pattern: "2video ?(.*)", fromMe: fm, desc: Lang.VIDEO_DESC }, (async (message, match) => {
     match = !message.reply_message ? match : message.reply_message.text;
     let vid = ytid.exec(match);
     if (match === "" || !vid) return await message.sendMessage(Lang.NEED_VIDEO);
