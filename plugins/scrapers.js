@@ -972,6 +972,37 @@ else if (config.WORKTYPE == 'public') {
             await message.client.sendMessage(message.jid,fs.readFileSync('./' + VID + '.mp4'), MessageType.video, {mimetype: Mimetype.mp4});
         });
     }));
+    
+     Asena.addCommand({ pattern: "video ?(.*)", fromMe: fm, desc: Lang.VIDEO_DESC }, (async (message, match) => {
+    match = !message.reply_message ? match : message.reply_message.text;
+    let vid = ytid.exec(match);
+    if (match === "" || !vid) return await message.sendMessage(Lang.NEED_VIDEO);
+    try {
+      let arama = await yts({ videoId: vid[1] });
+      if (arama.seconds === 0)
+        return await message.sendMessage(Lang.NO_SONG, {
+          quoted: message.data,
+        });
+      await message.sendMessage(Lang.DOWNLOADING_VIDEO);
+      let yt = ytdl(arama.videoId, {
+        filter: (format) =>
+          format.container === "mp4" &&
+          ["720p", "480p", "360p", "240p", "144p"].map(() => true),
+      });
+      yt.pipe(fs.createWriteStream("./" + arama.videoId + ".mp4"));
+      yt.on("end", async () => {
+        return await message.sendMessage(
+          fs.readFileSync("./" + arama.videoId + ".mp4"),
+          { mimetype: Mimetype.mp4, quoted: message.quoted },
+          MessageType.video
+        );
+      });
+    } catch {
+      return await message.sendMessage(Lang.NO_RESULT);
+    }
+  }
+);
+    
 
     Asena.addCommand({pattern: 'sing ?(.*)', fromMe: false, desc: Lang.SING_DESC}, (async (message, match) => { 
 
